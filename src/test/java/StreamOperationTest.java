@@ -59,13 +59,9 @@ public class StreamOperationTest {
         Author author1 = new Author();
         author1.setId(1);
         author1.setName("Snehal");
-        Book book1 = new Book();
-        book1.setAuthor(author1);
-        book1.setBookName("First Book");
-        book1.setId(1);
-        List<Book> bookList= streamOperation.getBookListByAuthorWithJava8(books,author1);
+        Book book1 = Book.createBook( "First Book",author1);
+        List<Book> bookList= streamOperation.getBookListByAuthorWithJava8(books, author1);
         assertThat(bookList,hasSize(2));
-        assertThat(bookList,hasItem(book1));
     }
 
     private List<Book> setupBooks() {
@@ -82,20 +78,11 @@ public class StreamOperationTest {
         author3.setId(3);
         author3.setName("Vijay");
 
-        Book book1 = new Book();
-        book1.setAuthor(author1);
-        book1.setBookName("First Book");
-        book1.setId(1);
+        Book book1 = Book.createBook( "First Book",author1);
 
-        Book book2 = new Book();
-        book2.setAuthor(author2);
-        book2.setBookName("Second Book");
-        book2.setId(2);
+        Book book2 = Book.createBook( "Second Book",author2);
 
-        Book book3 = new Book();
-        book3.setAuthor(author1);
-        book3.setBookName("Third Book");
-        book3.setId(3);
+        Book book3 = Book.createBook( "Third Book",author1);
 
         books.add(book1);
         books.add(book2);
